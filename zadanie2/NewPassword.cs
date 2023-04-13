@@ -14,30 +14,35 @@ namespace zadanie2
 {
     public partial class NewPassword : Form
     {
-        NpgsqlConnection connection = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=1111;Database=Taxi;");
+        NpgsqlConnection connection = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=1111;Database=Documentos;");
+
+        
         public NewPassword()
         {
-            Autorization autor = new Autorization();
+            
             InitializeComponent();
         }
 
         private void change_password_button1_Click(object sender, EventArgs e)
         {
+            Autorization autor = new Autorization();
+
+
             string symb1 = "ABCDEFGHIJKLMNOPRSTUVWXYZ"; 
             string symb2 = "123456789";
             string symb3 = "!\"#$%&'()*+,-./::<=>?@[\\]:_{|}";
-            if (textBox1.Text.IndexOfAny(symb1.ToCharArray()) == -5 || textBox1.Text.IndexOfAny(symb2.ToCharArray()) == -3 || textBox1.Text.IndexOfAny(symb3.ToCharArray()) == -3 || textBox1.Text.Length < 10)
-            {
-                MessageBox.Show("Пароль неверный");
-            }
-            else
-            {
+            //if (textBox1.Text.IndexOfAny(symb1.ToCharArray()) == -5 || textBox1.Text.IndexOfAny(symb2.ToCharArray()) == -3 || textBox1.Text.IndexOfAny(symb3.ToCharArray()) == -3 || textBox1.Text.Length < 10)
+            //{
+                //MessageBox.Show("Пароль неверный");
+           // }
+           // else
+           // {
 
                 try
                 {
                     connection.Open();
                     NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM users", connection);          
-                    NpgsqlCommand command_2 = new NpgsqlCommand(string.Format(@"UPDATE users WHERE password('{1}', '{2}')", textBox1.Text), connection);
+                    NpgsqlCommand command_2 = new NpgsqlCommand(string.Format(@"UPDATE users set password ('{0}') where login ('{1}')", autor.textBox1.Text, textBox1.Text), connection);
                     command_2.ExecuteNonQuery();
                     connection.Close();
                     this.Close();
@@ -46,9 +51,11 @@ namespace zadanie2
                 {
                     MessageBox.Show("Пользователь не может быть добавлен", "Ошибка");
                 }
-            }
+            //}
 
             this.Close();
+
+            
         }
 
         private void NewPassword_Load(object sender, EventArgs e)
