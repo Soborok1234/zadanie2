@@ -18,8 +18,7 @@ namespace zadanie2
     public partial class Form1 : Form
     {
         NpgsqlConnection connection = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=1111;Database=Documentos;");
-
-        //Bitmap memoryImage;
+        
         public Form1()
         {
             Autorization autor = new Autorization();
@@ -29,7 +28,10 @@ namespace zadanie2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            comboBox2.Items.Add("Клопоёбов Кам Алашев");
+            comboBox2.Items.Add("Фипрофанов Вибротуй Валянуй");
+
+            comboBox1.Items.Add("Типо учим, а потом орём");
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -94,11 +96,8 @@ namespace zadanie2
             {
                 connection.Open();
                 NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM dogovor", connection);
-               
-
-                
-
-                NpgsqlCommand command_2 = new NpgsqlCommand(string.Format(@"INSERT INTO dogovor(nomer_dog, FIO_obuch, FIO_plata, adres_plata, price) VALUES({0}, '{1}', '{2}', '{3}', {4})", textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text), connection);
+                MessageBox.Show($"{comboBox1.SelectedItem}");
+                NpgsqlCommand command_2 = new NpgsqlCommand(string.Format(@"INSERT INTO dogovor(nomer_dog, FIO_obuch, Nazna, FIO_plata, adres_plata, price) VALUES({0}, '{1}', '{2}', '{3}', {4}, '{5}')", textBox1.Text, comboBox2.SelectedText, comboBox1.SelectedText, textBox3.Text, textBox4.Text, textBox5.Text), connection);
                 command_2.ExecuteNonQuery();
                 connection.Close();
             }

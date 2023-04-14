@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Npgsql;
+using System.Data.SqlClient;
 
 namespace zadanie2
 {
@@ -42,9 +43,26 @@ namespace zadanie2
                 else
                 {
                     connection.Open();
-                    NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM users", connection);          
-                    NpgsqlCommand command_2 = new NpgsqlCommand(string.Format($"update users set password = '{textBox1.Text}' where login = '{autor.log_autor_textBox1.Text}'", connection));
-                    command_2.ExecuteNonQuery();
+                    var login = autor.log_autor_textBox1.Text;
+                    var password = textBox1.Text;
+
+                    var changequery = $"update users set password = '{password}' where login = '{login}'";
+
+                    var command = new NpgsqlCommand(changequery, connection);
+
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        MessageBox.Show("Вы успешно изменили пароль");
+                        autor.log_autor_textBox1.Text = "";
+                        textBox1.Text = "";
+                        Form1 frm = new Form1();
+                        this.Hide();
+                        frm.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Произошла ошибка");
+                    }
                     connection.Close();
                     this.Close();
                 }
