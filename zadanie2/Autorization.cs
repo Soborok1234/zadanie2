@@ -38,8 +38,8 @@ namespace zadanie2
                 string login = "qqqqqq#%@@##@&@&&@&@qqqqqqqqq";
                 string password = "@#^@#*^@U^(@(^*@#^*&@#^";
                 connection.Open();
-                NpgsqlCommand command1 = new NpgsqlCommand($"SELECT login FROM users WHERE login = '{textBox1.Text}'", connection);
-                NpgsqlCommand command2 = new NpgsqlCommand($"SELECT password FROM users WHERE password = '{textBox2.Text}'", connection);
+                NpgsqlCommand command1 = new NpgsqlCommand($"SELECT login FROM users WHERE login = '{log_autor_textBox1.Text}'", connection);
+                NpgsqlCommand command2 = new NpgsqlCommand($"SELECT password FROM users WHERE password = '{pass_autor_textBox2.Text}'", connection);
                 
                     using (var reader = command1.ExecuteReader())
                     {
@@ -56,9 +56,9 @@ namespace zadanie2
                         }
                     }
 
-                    if (login == textBox1.Text)
+                    if (login == log_autor_textBox1.Text)
                     {
-                        if (password == textBox2.Text)
+                        if (password == pass_autor_textBox2.Text)
                         {
                             this.Close();
                         }
@@ -69,9 +69,9 @@ namespace zadanie2
                     }
                     connection.Close();
                 
-                    if (login == textBox1.Text)
+                    if (login == log_autor_textBox1.Text)
                     {
-                        if (password == textBox2.Text)
+                        if (password == pass_autor_textBox2.Text)
                         {
                             this.Close();
                         }
@@ -98,6 +98,16 @@ namespace zadanie2
                 NewPassword newpas = new NewPassword();
                 newpas.ShowDialog();
             }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void log_autor_textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

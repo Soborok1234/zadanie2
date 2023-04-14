@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.button1 = new System.Windows.Forms.Button();
+            this.print_button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -37,25 +37,26 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.qr_button2 = new System.Windows.Forms.Button();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.insert_button3 = new System.Windows.Forms.Button();
+            this.select_button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // print_button1
             // 
-            this.button1.Location = new System.Drawing.Point(661, 410);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 52);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Печать";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.print_button1.Location = new System.Drawing.Point(661, 410);
+            this.print_button1.Name = "print_button1";
+            this.print_button1.Size = new System.Drawing.Size(127, 52);
+            this.print_button1.TabIndex = 10;
+            this.print_button1.Text = "Печать";
+            this.print_button1.UseVisualStyleBackColor = true;
+            this.print_button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
@@ -72,6 +73,7 @@
             this.pictureBox2.Location = new System.Drawing.Point(12, 50);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(170, 173);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 12;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
@@ -111,30 +113,25 @@
             this.textBox5.Size = new System.Drawing.Size(516, 20);
             this.textBox5.TabIndex = 17;
             // 
-            // button2
+            // qr_button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 410);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(127, 52);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Создать штрих";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.qr_button2.Location = new System.Drawing.Point(12, 410);
+            this.qr_button2.Name = "qr_button2";
+            this.qr_button2.Size = new System.Drawing.Size(127, 52);
+            this.qr_button2.TabIndex = 18;
+            this.qr_button2.Text = "Создать штрих";
+            this.qr_button2.UseVisualStyleBackColor = true;
+            this.qr_button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // printDialog1
             // 
             this.printDialog1.UseEXDialog = true;
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // printPreviewDialog1
             // 
             this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
             this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
             this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialog1.Document = this.printDocument1;
             this.printPreviewDialog1.Enabled = true;
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
@@ -154,14 +151,36 @@
             this.panel1.Size = new System.Drawing.Size(776, 392);
             this.panel1.TabIndex = 19;
             // 
+            // insert_button3
+            // 
+            this.insert_button3.Location = new System.Drawing.Point(145, 410);
+            this.insert_button3.Name = "insert_button3";
+            this.insert_button3.Size = new System.Drawing.Size(127, 52);
+            this.insert_button3.TabIndex = 20;
+            this.insert_button3.Text = "Внести договор в БД";
+            this.insert_button3.UseVisualStyleBackColor = true;
+            this.insert_button3.Click += new System.EventHandler(this.insert_button3_Click);
+            // 
+            // select_button4
+            // 
+            this.select_button4.Location = new System.Drawing.Point(278, 410);
+            this.select_button4.Name = "select_button4";
+            this.select_button4.Size = new System.Drawing.Size(127, 52);
+            this.select_button4.TabIndex = 21;
+            this.select_button4.Text = "Посмотреть список договоров";
+            this.select_button4.UseVisualStyleBackColor = true;
+            this.select_button4.Click += new System.EventHandler(this.select_button4_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 474);
+            this.Controls.Add(this.select_button4);
+            this.Controls.Add(this.insert_button3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.qr_button2);
+            this.Controls.Add(this.print_button1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -174,7 +193,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button print_button1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox textBox1;
@@ -182,11 +201,12 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button qr_button2;
         private System.Windows.Forms.PrintDialog printDialog1;
-        private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button insert_button3;
+        private System.Windows.Forms.Button select_button4;
     }
 }
 

@@ -43,7 +43,7 @@ namespace zadanie2
                 {
                     connection.Open();
                     NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM users", connection);          
-                    NpgsqlCommand command_2 = new NpgsqlCommand(string.Format($"update users set password = '{textBox1.Text}' where login = '{autor.textBox1.Text}'", connection));
+                    NpgsqlCommand command_2 = new NpgsqlCommand(string.Format($"update users set password = '{textBox1.Text}' where login = '{autor.log_autor_textBox1.Text}'", connection));
                     command_2.ExecuteNonQuery();
                     connection.Close();
                     this.Close();
