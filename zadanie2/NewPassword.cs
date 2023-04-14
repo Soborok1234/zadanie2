@@ -31,27 +31,29 @@ namespace zadanie2
             string symb1 = "ABCDEFGHIJKLMNOPRSTUVWXYZ"; 
             string symb2 = "123456789";
             string symb3 = "!\"#$%&'()*+,-./::<=>?@[\\]:_{|}";
-            //if (textBox1.Text.IndexOfAny(symb1.ToCharArray()) == -5 || textBox1.Text.IndexOfAny(symb2.ToCharArray()) == -3 || textBox1.Text.IndexOfAny(symb3.ToCharArray()) == -3 || textBox1.Text.Length < 10)
-            //{
-                //MessageBox.Show("Пароль неверный");
-           // }
-           // else
-           // {
+            
 
-                try
+            try
+            {
+                if (textBox1.Text.IndexOfAny(symb1.ToCharArray()) == -5 || textBox1.Text.IndexOfAny(symb2.ToCharArray()) == -3 || textBox1.Text.IndexOfAny(symb3.ToCharArray()) == -3 || textBox1.Text.Length < 10)
+                {
+                    MessageBox.Show("Пароль неверный");
+                }
+                else
                 {
                     connection.Open();
                     NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM users", connection);          
-                    NpgsqlCommand command_2 = new NpgsqlCommand(string.Format(@"UPDATE users set password ('{0}') where login ('{1}')", autor.textBox1.Text, textBox1.Text), connection);
+                    NpgsqlCommand command_2 = new NpgsqlCommand(string.Format($"update users set password = '{textBox1.Text}' where login = '{autor.textBox1.Text}'", connection));
                     command_2.ExecuteNonQuery();
                     connection.Close();
                     this.Close();
                 }
-                catch
-                {
-                    MessageBox.Show("Пользователь не может быть добавлен", "Ошибка");
-                }
-            //}
+                
+            }
+            catch
+            {
+                MessageBox.Show("Пользователь не может быть добавлен", "Ошибка");
+            }
 
             this.Close();
 
